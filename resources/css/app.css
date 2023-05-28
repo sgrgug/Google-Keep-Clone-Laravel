@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    #hoverItem {
+        @apply invisible;
+    }
+
+    #card:hover #hoverItem {
+        @apply visible;
+    }
+}

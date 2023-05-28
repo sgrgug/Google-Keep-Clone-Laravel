@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class keep extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'title', 'content', 'bgcolor'];
+    protected $fillable = ['name', 'title', 'content'];
 }

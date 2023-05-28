@@ -24,7 +24,6 @@ class KeepController extends Controller
         $keeps = new Keep;
         $keeps->title = $request->title;
         $keeps->content = $request->content;
-        $keeps->bgcolor = $request->bgcolor;
         $keeps->save();
         return redirect(route('index'));
     }

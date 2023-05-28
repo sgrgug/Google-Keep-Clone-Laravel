@@ -7,54 +7,54 @@
     @vite('resources/css/app.css')
 </head>
 
-<body>
-    {{-- <form class="bg-red-200 p-3" action="" method="post">
-    @csrf
-    <span>Title</span>
-    <input class="w-full m-1" type="text" name="title">
-
-    <span>content</span>
-    <input class="w-full m-1" type="text" name="content">
-
-    <span>bgcolor</span>
-    <input class="w-full m-1" type="text" name="bgcolor">
-
-    <input class="bg-blue-300" type="submit" value="Submit">
-  </form> --}}
-
+<body class="bg-stone-100">
+    <div class="text-center bg-white shadow-lg p-4 font-bold text-xl text-stone-600 sticky top-0 z-10">
+        <p>Google Keep Clone</p>
+    </div>
     <div class="max-w-screen-md m-auto">
-        <div class="shadow-lg m-3 rounded-md">
-            <div class="p-4">
-                <form action="" method="post">
+        <div class="shadow-lg my-16 rounded-md">
+            <div class="">
+                <form class="" action="" method="post">
                     @csrf
-                    <input class="w-full p-2 text-md font-bold focus:outline-none focus:border-transparent" type="text"
-                        placeholder="Title" name="title">
-                    <input class="w-full p-2 text-md focus:outline-none focus:border-transparent" type="text"
+                    <input class="w-full p-4 text-md font-bold focus:outline-none focus:border-transparent rounded-t-lg"
+                        type="text" placeholder="Title" name="title">
+                    <input class="w-full p-4 text-md focus:outline-none focus:border-transparent" type="text"
                         placeholder="Take a note..." name="content">
-                    <input type="radio" name="purple" id="purle">
-                    <input class="w-full p-2 text-md bg-blue-300 text-white capitalize font-bold cursor-pointer"
+                    <input
+                        class="w-full p-4 text-md bg-blue-400 text-white capitalize font-bold cursor-pointer rounded-b-lg"
                         type="submit" value="Submit">
                 </form>
             </div>
         </div>
     </div>
 
-
-    {{-- @foreach ($keep as $keeps)
-        {{ $keeps->title }}
-    @endforeach --}}
     <div class="max-w-screen-xl m-auto py-10">
         <div class="grid grid-cols-2 md:grid-cols-3">
             @foreach ($keep as $keeps)
                 {{-- {{ $keeps->title }} --}}
-                <div class="{{ $keeps->bgcolor }} m-1 rounded-lg p-4">
+                <div id="card"
+                    class="relative bg-white m-1 rounded-lg p-4 border-2 hover:shadow-md hover:border-2 hover:border-slate-300">
                     <b>{{ $keeps->title }}</b>
-                    <p>{{ $keeps->content }}</p>
-                
+                    <p class="line-clamp-2">{{ $keeps->content }}</p>
+
+                    <div class="mt-10">
+                        <div id="hoverItem" class="absolute bottom-0">
+                            <ion-icon class="mr-1 cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="create"></ion-icon>
+                            <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="trash"></ion-icon>
+                            <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="person-add"></ion-icon>
+                            <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="images-sharp"></ion-icon>
+                            <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="archive-sharp"></ion-icon>
+                            <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="ellipsis-vertical-sharp"></ion-icon>
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>
     </div>
+    <div class="h-screen"></div>
+    {{-- icon pack --}}
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
