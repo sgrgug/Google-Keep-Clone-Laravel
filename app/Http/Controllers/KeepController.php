@@ -49,7 +49,8 @@ class KeepController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $keep = Keep::find($id);
+        return view('editkeep', ['keep'->$keep]);
     }
 
     /**
@@ -65,6 +66,7 @@ class KeepController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Keep::destroy($id);
+        return redirect(route('index'));
     }
 }

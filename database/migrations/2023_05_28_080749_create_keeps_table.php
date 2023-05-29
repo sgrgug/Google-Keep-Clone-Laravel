@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
+            $table->boolean('pin')->default(0);
             $table->timestamps();
         });
     }
