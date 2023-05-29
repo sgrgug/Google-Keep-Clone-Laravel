@@ -25,6 +25,11 @@
                         class="w-full p-4 text-md bg-orange-400 text-white capitalize font-bold cursor-pointer rounded-b-lg"
                         type="submit" value="Submit">
                 </form>
+                @if (session()->has('status'))
+                    <div class="bg-green-300 p-2">
+                        {{ session('status') }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -44,11 +49,15 @@
                         {{-- Bottom Icon --}}
                         <div class="mt-10">
                             <div id="hoverItem" class="absolute bottom-0">
-                                <ion-icon class="mr-1 cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                    name="create"></ion-icon>
-                                <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                    name="trash">
-                                </ion-icon>
+                                <a href="{{ url('/editkeep', $keeps->id) }}">
+                                    <ion-icon class="mr-1 cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
+                                        name="create"></ion-icon>
+                                </a>
+                                <a href="{{ url('/delete', $keeps->id) }}">
+                                    <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
+                                        name="trash">
+                                    </ion-icon>
+                                </a>
                                 <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
                                     name="person-add"></ion-icon>
                                 <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
@@ -79,11 +88,11 @@
                     {{-- Bottom Icon --}}
                     <div class="mt-10">
                         <div id="hoverItem" class="absolute bottom-0">
-                            <a href="#">
+                            <a href="{{ url('/editkeep', $keeps->id) }}">
                                 <ion-icon class="mr-1 cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
                                     name="create"></ion-icon>
                             </a>
-                            <a href="{{ url('/delete',$keeps->id) }}">
+                            <a href="{{ url('/delete', $keeps->id) }}">
                                 <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
                                     name="trash">
                                 </ion-icon>

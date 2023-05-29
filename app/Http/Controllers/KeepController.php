@@ -25,7 +25,7 @@ class KeepController extends Controller
         $keeps->title = $request->title;
         $keeps->content = $request->content;
         $keeps->save();
-        return redirect(route('index'));
+        return redirect(route('index'))->with('status','Added! Successfully');
     }
 
     /**
@@ -50,7 +50,7 @@ class KeepController extends Controller
     public function edit(string $id)
     {
         $keep = Keep::find($id);
-        return view('editkeep', ['keep'->$keep]);
+        return view('editkeep', ['keep'=>$keep]);
     }
 
     /**
@@ -58,7 +58,11 @@ class KeepController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $keeps = Keep::find($id);
+        $keeps->title = $request->title;
+        $keeps->content = $request->content;
+        $keeps->save();
+        return redirect(route('index'))->with('status','Updated! Successfully');
     }
 
     /**
