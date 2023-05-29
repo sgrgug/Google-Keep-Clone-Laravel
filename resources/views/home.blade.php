@@ -23,7 +23,7 @@
                         placeholder="Take a note..." name="content">
                     <input
                         class="w-full p-4 text-md bg-orange-400 text-white capitalize font-bold cursor-pointer rounded-b-lg"
-                        type="submit" value="Submit">
+                        type="submit" value="Create">
                 </form>
                 @if (session()->has('status'))
                     <div class="bg-green-300 p-2">
