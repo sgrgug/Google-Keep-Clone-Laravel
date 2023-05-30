@@ -13,7 +13,16 @@ class KeepController extends Controller
     public function index()
     {
         $keep = Keep::all();
-        return view('home', ['keep'=>$keep]);
+
+        // It's check the availability of pinned keep to show the title pinned in blade file
+        $pinAvailable = Keep::where('pin', '=', 1)->exists();
+        if ($pinAvailable) {
+            $isAvailability = "Pinned";
+        } else {
+            $isAvailability = "";
+        }
+
+        return view('home', ['keep'=>$keep], ['isAvailability'=>$isAvailability]);
     }
 
     /**

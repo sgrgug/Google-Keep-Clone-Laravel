@@ -35,59 +35,18 @@
     </div>
 
     {{-- Pin --}}
-    <div class="max-w-screen-xl m-auto py-10">
-        Pinned
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    <div class="max-w-screen-xl m-auto py-0 px-16 my-16">
+        <div class="py-8 uppercase">{{ $isAvailability }}</div>
+        <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
             @foreach ($keep as $keeps)
                 @if ($keeps->pin === 1)
-                    {{-- {{ $keeps->title }} --}}
                     <div id="card"
-                        class="relative bg-white m-1 rounded-lg p-4 border-2 hover:shadow-md hover:border-2 hover:border-slate-300">
-                        <b>{{ $keeps->title }}</b>
-                        <p class="line-clamp-2">{{ $keeps->content }}</p>
+                        class="bg-white rounded-md px-4 break-inside-avoid border-2 hover:shadow-md hover:border-2 hover:border-slate-300 cursor-default">
+                        <div class="font-bold py-3">{{ $keeps->title }}</div>
+                        <div class="line-clamp-6">{{ $keeps->content }}</div>
 
-                        {{-- Bottom Icon --}}
-                        <div class="mt-10">
-                            <div id="hoverItem" class="absolute bottom-0">
-                                <a href="{{ url('/editkeep', $keeps->id) }}">
-                                    <ion-icon class="mr-1 cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                        name="create"></ion-icon>
-                                </a>
-                                <a href="{{ url('/delete', $keeps->id) }}">
-                                    <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                        name="trash">
-                                    </ion-icon>
-                                </a>
-                                <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                    name="person-add"></ion-icon>
-                                <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                    name="images-sharp"></ion-icon>
-                                <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                    name="archive-sharp"></ion-icon>
-                                <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                    name="ellipsis-vertical-sharp"></ion-icon>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            @endforeach
-        </div>
-    </div>
-
-
-    {{-- Others --}}
-    <div class="max-w-screen-xl m-auto py-10">
-        Others
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-            @foreach ($keep as $keeps)
-                <div id="card"
-                    class="relative bg-white m-1 rounded-lg p-4 border-2 hover:shadow-md hover:border-2 hover:border-slate-300">
-                    <b>{{ $keeps->title }}</b>
-                    <p class="line-clamp-2">{{ $keeps->content }}</p>
-
-                    {{-- Bottom Icon --}}
-                    <div class="mt-10">
-                        <div id="hoverItem" class="absolute bottom-0">
+                        {{-- For Bottom Logo --}}
+                        <div id="hoverItem" class="flex justify-between items-center pt-8">
                             <a href="{{ url('/editkeep', $keeps->id) }}">
                                 <ion-icon class="mr-1 cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
                                     name="create"></ion-icon>
@@ -98,20 +57,75 @@
                                 </ion-icon>
                             </a>
                             <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                name="person-add"></ion-icon>
+                                name="person-add">
+                            </ion-icon>
                             <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                name="images-sharp"></ion-icon>
+                                name="images-sharp">
+                            </ion-icon>
                             <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
-                                name="archive-sharp"></ion-icon>
+                                name="archive-sharp">
+                            </ion-icon>
                             <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
                                 name="ellipsis-vertical-sharp"></ion-icon>
                         </div>
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+
+
+    {{-- Others --}}
+    <div class="max-w-screen-xl m-auto py-0 px-16">
+        <div class="py-8 uppercase">Others</div>
+        <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+            @foreach ($keep as $keeps)
+                <div id="card"
+                    class="relative bg-white rounded-md px-4 break-inside-avoid border-2 hover:shadow-md hover:border-2 hover:border-slate-300 cursor-default">
+                    <div id="hoverItem" class="absolute -top-3.5 -left-3.5 text-2xl cursor-pointer">
+                        <ion-icon name="checkmark-circle-sharp"></ion-icon>
+                    </div>
+
+                    {{-- Pin Logo --}}
+                    <div class="absolute top-3 right-1 text-2xl">
+                        @if ($keeps->pin === 1)
+                            <ion-icon name="pin-sharp"></ion-icon>
+                        @else
+                            <ion-icon name="pin-outline"></ion-icon>
+                        @endif
+                    </div>
+
+                    {{-- title --}}
+                    <div class="font-bold py-3">{{ $keeps->title }}</div>
+                    {{-- content --}}
+                    <div class="line-clamp-6">{{ $keeps->content }}</div>
+
+                    {{-- For Bottom Logo --}}
+                    <div id="hoverItem" class="flex justify-between items-center pt-8">
+                        <a href="{{ url('/editkeep', $keeps->id) }}">
+                            <ion-icon class="mr-1 cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
+                                name="create"></ion-icon>
+                        </a>
+                        <a href="{{ url('/delete', $keeps->id) }}">
+                            <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="trash">
+                            </ion-icon>
+                        </a>
+                        <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="person-add">
+                        </ion-icon>
+                        <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="images-sharp">
+                        </ion-icon>
+                        <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full" name="archive-sharp">
+                        </ion-icon>
+                        <ion-icon class="cursor-pointer p-2 hover:bg-stone-100 hover:rounded-full"
+                            name="ellipsis-vertical-sharp"></ion-icon>
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
-    <div class="h-screen"></div>
+
+
+
 
     {{-- Input focus after reloadig --}}
     <script>
