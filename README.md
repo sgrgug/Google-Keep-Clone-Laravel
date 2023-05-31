@@ -2,9 +2,13 @@
 # Google Keep Clone
 
 CRUD operation Google Keep Clone using laravel.
-## Screenshots
+## Screenshots 1
 
-![App Screenshot](https://raw.githubusercontent.com/sgrgug/Google-Keep-Clone-Laravel/master/public/images/Google%20Keep%20Clone%20Laravel.png)
+![App Screenshot](https://raw.githubusercontent.com/sgrgug/Google-Keep-Clone-Laravel/master/public/images/Google%20Keep%20Clone%20SS1.png)
+
+## Screenshots 2
+
+![App Screenshot](https://raw.githubusercontent.com/sgrgug/Google-Keep-Clone-Laravel/master/public/images/Google%20Keep%20Clone%20SS2.png)
 
 
 ## Run Locally
