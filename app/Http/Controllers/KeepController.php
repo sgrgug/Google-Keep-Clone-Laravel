@@ -26,14 +26,29 @@ class KeepController extends Controller
     }
 
     /**
+     * Pin the keeep
+     */
+    // public function pinKeep()
+    // {
+
+    // }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
+
+        $validate = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
         $keeps = new Keep;
         $keeps->title = $request->title;
         $keeps->content = $request->content;
         $keeps->save();
+
         return redirect(route('index'))->with('status','Added! Successfully');
     }
 
@@ -59,6 +74,7 @@ class KeepController extends Controller
     public function edit(string $id)
     {
         $keep = Keep::find($id);
+
         return view('editkeep', ['keep'=>$keep]);
     }
 
@@ -71,6 +87,7 @@ class KeepController extends Controller
         $keeps->title = $request->title;
         $keeps->content = $request->content;
         $keeps->save();
+
         return redirect(route('index'))->with('status','Updated! Successfully');
     }
 
@@ -80,6 +97,7 @@ class KeepController extends Controller
     public function destroy(string $id)
     {
         Keep::destroy($id);
+
         return redirect(route('index'));
     }
 }

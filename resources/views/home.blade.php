@@ -11,9 +11,16 @@
     <div class="text-center bg-white shadow-lg p-4 font-bold text-xl text-stone-600 sticky top-0 z-10">
         <p>Google Keep Clone</p>
     </div>
+    
+
     <div class="max-w-screen-md m-auto">
         <div class="shadow-lg my-16 rounded-md">
             <div class="">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $message)
+                        <div class="bg-red-400 text-center text-white">{{ $message }}</div>
+                    @endforeach
+                @endif
                 <form class="" action="" method="post">
                     @csrf
                     <input id="title"
@@ -34,7 +41,6 @@
         </div>
     </div>
 
-    {{-- Pin --}}
     <div class="max-w-screen-xl m-auto py-0 px-16 my-16">
         <div class="py-8 uppercase">{{ $isAvailability }}</div>
         <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
@@ -87,13 +93,13 @@
                     </div>
 
                     {{-- Pin Logo --}}
-                    <div class="absolute top-3 right-1 text-2xl">
+                    <a href="#" id="hoverItem" class="absolute top-3 right-1 text-2xl">
                         @if ($keeps->pin === 1)
                             <ion-icon name="pin-sharp"></ion-icon>
                         @else
                             <ion-icon name="pin-outline"></ion-icon>
                         @endif
-                    </div>
+                    </a>
 
                     {{-- title --}}
                     <div class="font-bold py-3">{{ $keeps->title }}</div>
