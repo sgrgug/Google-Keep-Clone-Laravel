@@ -25,6 +25,12 @@ Go to the project directory
   cd..
 ```
 
+Update Composer
+
+```bash
+composer update
+```
+
 Install npm required package
 
 ```bash
@@ -37,10 +43,21 @@ Run npm
 npm run dev
 ```
 
-Update Composer
+## Create .env file in Google-Keep-Clone/
+
+- Copy .env.example and paste in .env
+
+
+Generate Key
 
 ```bash
-composer update
+php artisan key:generate
+```
+
+Migrate the table
+
+```bash
+php artisan migrate
 ```
 
 Run laravel project
